@@ -74,12 +74,17 @@ while (input !== 'quit' && input !== 'q') {
 				// Display the feed
 				// Bug in example, he wanted feeds[index]
 				// let {data} = await axios.get('https://www.reddit.com/r/node.rss');
-				let {data} = await axios.get(feeds[index]);
-			
-				// returns a list of items, could also parse the URL directly
-				let feed = await parser.parseString(data);
-				// print all the array content 
-				feed.items.forEach(item => console.log(item.title));
+				// Put in extra error handler 
+				try {
+					let {data} = await axios.get(feeds[index]);
+					// returns a list of items, could also parse the URL directly
+					let feed = await parser.parseString(data);
+					// print all the array content 
+					feed.items.forEach(item => console.log(item.title));
+				}
+				catch (error) {
+					console.log(`Error ${error} with feed: ${feeds[index]}`);
+				}
 			} // End if
 			else {
 				console.log('The provided index is out of range.');

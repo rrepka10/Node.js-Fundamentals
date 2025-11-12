@@ -91,13 +91,19 @@ emitter.on('read', async (index) => {
 			// 
 			
 			// Display the feed
-			let {data} = await axios.get(feeds[index]);
+			// Put in extra error handler 
+			try {
+				let {data} = await axios.get(feeds[index]);
 		
-			// returns a list of items, could also parse the URL directly
-			let feed = await parser.parseString(data);
-			// print all the array content 
-			feed.items.forEach(item => console.log(item.title));			
-			} // End if
+				// returns a list of items, could also parse the URL directly
+				let feed = await parser.parseString(data);
+				// print all the array content 
+				feed.items.forEach(item => console.log(item.title));			
+			}
+			catch (error) {
+				console.log(`Error ${error} with feed: ${feeds[index]}`);
+			} // End Catch
+		} // End if
 		else {
 			console.log('The provided index is out of range.');
 		} // End else
