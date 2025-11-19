@@ -1,8 +1,11 @@
 import express from 'express';
 import {routes as guitarRoutes} from './guitars/routes.js';
+import {routes as authRoutes}   from './auth/routes.js';
+import session from 'express-session';
 
 // Create an express object
 const app = express();
+
 
 // Tell express we want to use static assets and where they are
 // Static assets will be in the public folder, to use the style.css
@@ -13,9 +16,27 @@ app.use(express.static('./public'));
 // If extended: false, then the queryString library is used (simple URL encoded string)
 app.use(express.urlencoded({ extended: false }));
 
+// Setup sessions before any routes, it has three values.  
+// The first is a text string to sign the cookies
+// The second is "saveUninitialized: false", only store sessions for authinicated users
+//                don't store anything if the user does not authenticate
+// The third is :resave: false", only save data when it changes. 
+app.use(session({
+    secret: 'birds fly high asdlkfjlksajdfsdafZXCV234asdf',
+    saveUninitialized: false,
+    resave: false
+}));
+
+
+
 // The base URL to start with our imported routes
 // e.g.  http:localhost:8080/guitars/xxxxx
 app.use('/guitars', guitarRoutes);
+
+
+// The base URL to start with our imported routes
+// e.g.  http:localhost:8080/login
+app.use('/', authRoutes);
 
 // Handle the default route
 app.get('/', (req, res) => {

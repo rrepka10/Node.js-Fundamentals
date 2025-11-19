@@ -12,6 +12,7 @@ Installation instructions:
  sudo npm install express
  sudo npm install rss-parser
  sudo npm install axios
+ sudo npm install express-session
 
 calcExample - Contains the Calculator exmples, section 2.4, 2.5, 2.6 
 	test: node calc.js     then enter simple math equation like 1+1, quit to exit 
@@ -56,7 +57,7 @@ http-server - Containes the code for the manual implemtation of an http server, 
 
 ---------------------------------------------------------------------------------
 node-express - Containes the code for the Express implemtation of an http server
-              sections 5.1-5.9
+              sections 5.1-5.9 & 6.1-6.3
 
 	Note: To create a defaul package.json file use: npm init -y    (already provided in git)
       		Use nodemon to automatically restart our running Nodejs task when changed
@@ -96,5 +97,12 @@ MVC - 	model 		- the data
 	localhost:8080/guitars/2/edit	- brings up the guitar form with prefilled data
 	localhost:8080/guitars/2/delete	- removes the selected guitar	
 
+	// Test cases for 6.1-6.3
+	localhost:8080/sum/1-20			- displays 21
+	localhost:8080/login 			- brings up the login form
+		enter junk, returns to the blank form
+		enter admin@admin.com password - should redirect to /guitars
+		you can now create/delete guitars
+	ocalhost:8080/logout 			- brings up the home page, you can no longer create/delete guitars
 
 
