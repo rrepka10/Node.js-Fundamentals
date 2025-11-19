@@ -17,7 +17,7 @@ calcExample - Contains the Calculator exmples, section 2.4, 2.5, 2.6
 	test: node calc.js     then enter simple math equation like 1+1, quit to exit 
 	      node calc_ES.js  then enter simple math equation like 1+1, quit to exit 
 				
-
+---------------------------------------------------------------------------------
 rssFeedMgr - contains the code for the simple rss feed manager, sections 3.1-3.5
 	test: node feedreader.mjs   then enter commands: list, add <url>, del <n>, read <n>, quit
                                     Note: no additional leading spaces in add command 
@@ -33,15 +33,18 @@ rssFeedMgr - contains the code for the simple rss feed manager, sections 3.1-3.5
 		   add https://www.reddit.com/r/nodes.rss      (adding an invalid URL)
 		   run 0            products nice text
 
-http-server - Containes the code for the manual implemtation of an http server, not using express
-              sectios 4.1-4.8
 
-Note: To create a defaul package.json file use: npm init -y    (already provided in git)
-      Use nodemon to automatically restart our running Nodejs task when changed
-      Added -L under WSL2 e.g:  nodemon index.mjs  -L  (note, we used the package.json file to default our .js to .mjs)
-      Package.json 
-           "type": "module",  // means all .js are really .mjs, note the default json file	
-	                      // may already have a default "type": "commonjs", so be sure to remove it
+---------------------------------------------------------------------------------
+http-server - Containes the code for the manual implemtation of an http server, not using express
+              sections 4.1-4.8
+
+	Note: To create a defaul package.json file use: npm init -y    (already provided in git)
+      		Use nodemon to automatically restart our running Nodejs task when changed
+      		Added -L under WSL2 e.g:  nodemon index.mjs  -L  (note, we used the package.json 
+		file to default our .js to .mjs)
+      	Package.json 
+           	"type": "module",  // means all .js are really .mjs, note the default json file	
+	        	           // may already have a default "type": "commonjs", so be sure to remove it
 
 	Test: nodemon dev  - to run the dev json entry, then in your browser:
 
@@ -49,21 +52,49 @@ Note: To create a defaul package.json file use: npm init -y    (already provided
 		   click on a guitar, select delete, a new list should be displayed with guitar deleted
 		   click on "add new guitar", should bring up the add form.  Enter some data, it should be 
 						displayed in the guitar list, results in a post event
+
+
+---------------------------------------------------------------------------------
+node-express - Containes the code for the Express implemtation of an http server
+              sections 5.1-5.9
+
+	Note: To create a defaul package.json file use: npm init -y    (already provided in git)
+      		Use nodemon to automatically restart our running Nodejs task when changed
+      		Added -L under WSL2 e.g:  nodemon index.mjs  -L  (note, we used the package.json 
+		file to default our .js to .mjs)
+      	Package.json 
+           	"type": "module",  // means all .js are really .mjs, note the default json file	
+	        	           // may already have a default "type": "commonjs", so be sure to remove it
+						   
+		The original code had a CORS Content-Security-Policy issue, fixed in view.js _layout with:
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src resource:; img-src 'self';">
+
+MVC - 	model 		- the data
+		view 		- the UI
+		controller	- Processes the data into the UI
+
+	Test: nodemon dev  - to run the dev json entry, then in your browser:
+
+		http:localhost:8080  			- returns the list of guitars
+		   click on a guitar, select delete, a new list should be displayed with guitar deleted
+	
 		
------------------------------
-
-		http://localhost:8080/delete/2  	- deletes guitar 2 and shows the new list
-		
-// Test cases					- returns Home Page
-localhost:8080					- returns 
-localhost:8080/guitars			- returns guitar list data
-localhost:8080/guitars/2		- returns guitar 2 data
-localhost:8080/guitars/2		- returns not found
-localhost:8080/guitars/prs 		- returns the 2 PRS guitar
-
-
-localhost:8080/guitars/sum/2-3	- returns 5
-
+	// Test cases before MVC 			
+	localhost:8080					- returns home page
+	localhost:8080/guitars			- returns guitar list data
+	localhost:8080/guitars/2		- returns guitar 2 data
+	localhost:8080/guitars/5		- returns not found
+	localhost:8080/guitars/prs 		- returns the 2 PRS guitar
+	
+	// Test cases after MVC 			
+	localhost:8080					- returns home page
+	localhost:8080/guitars			- returns guitar list gui
+		click on a guitar			- returns specific guitar data
+	localhost:8080/guitars/prs		- returns PRS guitar list gui
+	localhost:8080/guitars/create	- displays the new guitar form		
+		click save					- addes the new guitar and displays the new list
+	localhost:8080/guitars/2/edit	- brings up the guitar form with prefilled data
+	localhost:8080/guitars/2/delete	- removes the selected guitar	
 
 
 
