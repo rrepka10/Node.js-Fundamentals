@@ -14,6 +14,8 @@ Installation instructions:
  sudo npm install axios
  sudo npm install express-session
  sudo npm install express-handlebars
+ sudo npm install mongoose
+ sudo npm install dotenv
 
 calcExample - Contains the Calculator exmples, section 2.4, 2.5, 2.6 
 	test: node calc.js     then enter simple math equation like 1+1, quit to exit 
@@ -121,3 +123,17 @@ handlebars - Containes the code for the Express handlebars implemtation of an ht
 		click save					- addes the new guitar and displays the new list
 	localhost:8080/guitars/2/edit	- brings up the guitar form with prefilled data
 	localhost:8080/guitars/2/delete	- removes the selected guitar	
+
+
+---------------------------------------------------------------------------------
+mongo - Containes the code for the Mongo data base implementation, sections 8.1-8.7
+	Requires a Mongo DB altas account mongodb.com
+		create a project "Node Fundemntals", no users, select free, 
+		take defaults for the rest and create the data base, 
+		by default your current IP address will be given access. 
+		record the default DB users name and password: rrepka10_db_user  l3qfEjCAzZHaGcgu
+		select create data base user
+		select connect to clust0 with: driver, nodeJS
+		Note: You will need to create a .env file in the mongo directory with your credentials
+			DB_ADMIN=
+			DB_PASSWORD=
