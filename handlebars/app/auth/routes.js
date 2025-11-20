@@ -1,14 +1,9 @@
 import {Router} from 'express';
 import {authenticate, logout, showLogin} from './controller.js';
 
-// export these routes to the main program
 export const routes = new Router();
 
-// Show the login form
+// export these routes to the main program
 routes.get('/login', showLogin);
-
-// Post the login form data
 routes.post('/login', authenticate);
-
-// Logout 
 routes.get('/logout', logout);

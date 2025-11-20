@@ -13,6 +13,7 @@ Installation instructions:
  sudo npm install rss-parser
  sudo npm install axios
  sudo npm install express-session
+ sudo npm install express-handlebars
 
 calcExample - Contains the Calculator exmples, section 2.4, 2.5, 2.6 
 	test: node calc.js     then enter simple math equation like 1+1, quit to exit 
@@ -103,6 +104,20 @@ MVC - 	model 		- the data
 		enter junk, returns to the blank form
 		enter admin@admin.com password - should redirect to /guitars
 		you can now create/delete guitars
-	ocalhost:8080/logout 			- brings up the home page, you can no longer create/delete guitars
+	localhost:8080/logout 			- brings up the home page, you can no longer create/delete guitars
 
 
+---------------------------------------------------------------------------------
+handlebars - Containes the code for the Express handlebars implemtation of an http express server
+              sections 7.1-7.5
+			  	// Test cases after MVC 			
+	localhost:8080					- returns welcome home page
+	localhost:8080/guitars			- returns guitar list gui, top ribbon show "login"
+		click on a guitar			- returns specific guitar data
+	localhost:8080/guitars/prs		- returns PRS guitar list gui
+	localhost:8080/guitars/create	- forces a login (admin@admin.com password)
+	localhost:8080/guitars/create 	- displays the new guitar form, with the top ribbon now		
+									  set to "logout"
+		click save					- addes the new guitar and displays the new list
+	localhost:8080/guitars/2/edit	- brings up the guitar form with prefilled data
+	localhost:8080/guitars/2/delete	- removes the selected guitar	

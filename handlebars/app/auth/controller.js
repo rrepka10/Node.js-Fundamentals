@@ -1,8 +1,9 @@
 // Get out login view 
-import {view} from './view.js';
+//import {view} from './view.js';  // Previous code
 
-// Export our login form
-export const showLogin = (req, res) => res.send(view('loginForm'));
+// Export our login form using handlebars, passing the title, using the plain layout
+//export const showLogin = (req, res) => res.send(view('loginForm'));   	// Previous code
+export const showLogin = (req, res) => res.render('auth/login', {title: 'Login', layout: 'plain'});
 
 export function authenticate(req, res) {
 	// Get the passed data
@@ -20,6 +21,7 @@ export function authenticate(req, res) {
 	// There must be password and email data, is it valid?
     if (email.toLowerCase() === 'admin@admin.com' && password === 'password') {
 		// yes, save the state info
+		console.log('Password valid');
         req.session.user = {
             email,
             isAuthenticated: true
@@ -29,6 +31,7 @@ export function authenticate(req, res) {
         res.redirect('/guitars');
     } else {
 		// No, go back to the login screen
+		console.log('Password invalid');
         res.redirect('/login');
     }
 }
@@ -40,15 +43,19 @@ export function checkAuth(req, res, next) {
 
     if (isAuthenticated) {
 		// Yes, then execute the request
+		console.log('IS authenticated');
         next();
     } else {
 		// NO, back to login
+		console.log('NOT authenticated');
         res.redirect('/login');
     }
 }
 
 // Logout
 export function logout(req, res) {
+	// Destroy the login cookie, if any
+	console.log('logout');
     req.session.destroy();
 
     res.redirect('/');

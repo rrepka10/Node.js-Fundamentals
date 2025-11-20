@@ -1,0 +1,13 @@
+<!-- pass a variable at title, note 2 braces -->
+<h2>{{title}}</h2>
+<ul>
+	<!-- iterate over the guitars array -->
+    {{#each guitars}}
+        <li>
+			<!-- inside this loop the "this" variable is our data -->
+            <a href="/guitars/{{this.id}}">
+                {{this.make}} {{this.model}}
+            </a>
+        </li>
+    {{/each}}
+</ul>
