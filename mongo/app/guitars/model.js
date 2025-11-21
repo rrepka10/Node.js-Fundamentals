@@ -16,18 +16,6 @@ const guitarSchema = new mongoose.Schema({
 // Create a model class using our schema 
 const Guitar = mongoose.model('Guitar', guitarSchema);
 
-// Create our first sample guitar 
-// const guitar = new Guitar({
-//     make: 'Fender',
-//     model: 'Strat',
-//     make_lower: 'fender'
-// });
-
-// Save our sample guitar, You can see this data online in data -> cluster0 -> test
-// guitar.save();
-
-
-
 // Add a new guitar to our data base
 export async function addGuitar(make, model) {
 	// Build the new guitar object

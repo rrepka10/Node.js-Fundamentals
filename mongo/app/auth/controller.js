@@ -1,11 +1,11 @@
-// Get out login view 
-//import {view} from './view.js';  // Previous code
+// Get the stuff we need for password
+import { compare } from './crypt.js';
+import {User} from './model.js';
 
 // Export our login form using handlebars, passing the title, using the plain layout
-//export const showLogin = (req, res) => res.send(view('loginForm'));   	// Previous code
 export const showLogin = (req, res) => res.render('auth/login', {title: 'Login', layout: 'plain'});
 
-export function authenticate(req, res) {
+export async function authenticate(req, res) {
 	// Get the passed data
     const { email, password } = req.body;
 
@@ -18,14 +18,24 @@ export function authenticate(req, res) {
         return;
     }
 
-	// There must be password and email data, is it valid?
-    if (email.toLowerCase() === 'admin@admin.com' && password === 'password') {
-		// yes, save the state info
-		console.log('Password valid');
+	// See if the user is in our database
+    const user = await User.findOne({email: email.toLowerCase()});
+	if (!user) {
+		// No, try again
+		console.log('User not fouund');
+
+        res.redirect('/login');
+        return;
+    }
+
+	// See if the password matches
+    if (await compare(password, user.password)) {
+		// Build the session data
         req.session.user = {
             email,
             isAuthenticated: true
         };
+		console.log('Password valid');
 
 		// Show the guitar screen
         res.redirect('/guitars');

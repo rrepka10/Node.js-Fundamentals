@@ -16,6 +16,7 @@ Installation instructions:
  sudo npm install express-handlebars
  sudo npm install mongoose
  sudo npm install dotenv
+ sudo npm install bcrypt
 
 calcExample - Contains the Calculator exmples, section 2.4, 2.5, 2.6 
 	test: node calc.js     then enter simple math equation like 1+1, quit to exit 
@@ -137,3 +138,18 @@ mongo - Containes the code for the Mongo data base implementation, sections 8.1-
 		Note: You will need to create a .env file in the mongo directory with your credentials
 			DB_ADMIN=
 			DB_PASSWORD=
+
+
+	Note:  setup.js is used to allocate users for our system, use it to allocate a valid user.
+			this requires the Mongo DB service
+	
+	localhost:8080					- returns welcome home page
+	localhost:8080/guitars			- returns guitar list gui, top ribbon show "login"
+		click on a guitar			- returns specific guitar data
+	localhost:8080/guitars/prs		- returns PRS guitar list gui
+	localhost:8080/guitars/create	- forces a login (admin@admin.com password)
+	localhost:8080/guitars/create 	- displays the new guitar form, with the top ribbon now		
+									  set to "logout"
+		click save					- addes the new guitar and displays the new list
+	localhost:8080/guitars/2/edit	- brings up the guitar form with prefilled data
+	localhost:8080/guitars/2/delete	- removes the selected guitar	

@@ -69,11 +69,6 @@ app.use('/guitars', guitarRoutes);
 // e.g.  http:localhost:8080/login
 app.use('/', authRoutes);
 
-// Handle the default route
-//app.get('/', (req, res) => {
-//    res.send('Home Page');
-//});
-
 // Display the home page
 app.get('/', (req, res) => {
     res.render('home');
