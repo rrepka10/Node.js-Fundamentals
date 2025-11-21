@@ -1,6 +1,3 @@
-// Get out login view 
-//import {view} from './view.js';  // Previous code
-
 // Export our login form using handlebars, passing the title, using the plain layout
 //export const showLogin = (req, res) => res.send(view('loginForm'));   	// Previous code
 export const showLogin = (req, res) => res.render('auth/login', {title: 'Login', layout: 'plain'});

@@ -8,10 +8,6 @@ let id = 1;
 const getId = () => id++
 
 // Our initial list of guitars.
-// Origionally
-//    {id: 1, make: 'Fender', model: 'Strat'},
-//    {id: 2, make: 'PRS', model: 'Starla'},
-//    {id: 3, make: 'Gibson', model: 'Les Paul'},
 const guitars = [
     {id: getId(), make: 'Fender', model: 'Strat'},
     {id: getId(), make: 'PRS', model: 'Starla'},

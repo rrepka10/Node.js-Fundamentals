@@ -82,9 +82,8 @@ export async function editGuitar(req, res) {
 // List the guitars 
 export async function listGuitars(req, res) {
     const guitars = await getAll();
-    //res.send(guitars);             // original
 	// Use the views feature
-//	res.send(					// previous cde
+//	res.send(					// previous code
 //		// Call the list view providing the guitars data 
 //        view('list', {
 //            guitars,
@@ -134,7 +133,6 @@ export async function showGuitar(req, res) {
             res.sendStatus(404);
         } else {
 			//Yes, return the data
-			//res.send(found);		// original
 			// res.send(
 				// Call the list view providing the guitars data 
 				// Create a dummy guitars object
