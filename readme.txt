@@ -131,7 +131,7 @@ mongo - Containes the code for the Mongo data base implementation, sections 8.1-
 		create a project "Node Fundemntals", no users, select free, 
 		take defaults for the rest and create the data base, 
 		by default your current IP address will be given access. 
-		record the default DB users name and password: rrepka10_db_user  l3qfEjCAzZHaGcgu
+		record the default DB users name and password: 
 		select create data base user
 		select connect to clust0 with: driver, nodeJS
 		Note: You will need to create a .env file in the mongo directory with your credentials
