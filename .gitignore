@@ -1,2 +1,2 @@
 # Ignore env frile
-.env  
+mongo/.env  
